@@ -45,7 +45,7 @@ class TweetsController < ApplicationController
     else
       @tweet = Tweet.find_by(params[:id])
       erb :'/tweets/edit_tweet'
-      binding.pry
+      # binding.pry
     end
   end
 
