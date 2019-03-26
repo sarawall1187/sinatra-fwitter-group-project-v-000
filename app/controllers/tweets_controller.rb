@@ -50,12 +50,15 @@ class TweetsController < ApplicationController
   end
 
    patch '/tweets/:id' do
+     if params[:content].empty?
+       redirect to '/tweets/new'
+      else
      @tweet = Tweet.find_by(params[:id])
      @tweet.content = params[:content]
      @tweet.save
      redirect to :'/tweets/:id'
    end
-
+ end
 
 
 
