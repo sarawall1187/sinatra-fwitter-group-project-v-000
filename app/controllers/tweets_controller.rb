@@ -9,4 +9,35 @@ class TweetsController < ApplicationController
     end
    end
 
+   get '/tweets/new' do
+     @user = User.find_by(params[:username])
+     if logged_in?
+       erb :'/tweets/new'
+     else
+       redirect to '/login'
+   end
+ end
+
+   post '/tweets' do
+     if params[:content].empty?
+       redirect to '/tweets/new'
+      else
+       @tweet = Tweet.create(:content => params[:content])
+       @user = User.find_by(params[:username])
+       @tweet.user_id = @user.id
+       @tweet.save
+       erb :'/tweets/show_tweet'
+     end
+   end
+
+   get '/tweets/:slug' do
+     if !logged_in?
+       redirect to '/login'
+     else
+      @tweet = Tweet.find_by(params[:slug])
+      erb :'/tweets/show_tweet'
+    end
+  end
+
+
 end
