@@ -60,11 +60,11 @@ class TweetsController < ApplicationController
      end
    end
 
-   delete '/tweets/:id/delete' do #delete action
-  @tweet = Tweet.find(params[:id])
-  @tweet.delete
-  redirect to '/tweets'
-end
+    delete '/tweets/:id/delete' do 
+      @tweet = Tweet.find(params[:id])
+      @tweet.delete
+      redirect to '/tweets'
+    end
 
 
 end
