@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
      if !logged_in?
        redirect to '/login'
      else
-      @tweet = Tweet.find_by(params[:slug])
+      @tweet = Tweet.find_by(params[:id])
       erb :'/tweets/show_tweet'
     end
   end
@@ -43,7 +43,7 @@ class TweetsController < ApplicationController
     if !logged_in?
       redirect to '/login'
     else
-      @tweet = Tweet.find_by(params[:slug])
+      @tweet = Tweet.find_by(params[:id])
       erb :'/tweets/edit_tweet'
     end
   end
