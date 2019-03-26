@@ -56,7 +56,7 @@ class TweetsController < ApplicationController
       else
        @tweet.content = params[:content]
        @tweet.save
-       redirect to :'/tweets/:id'
+       redirect to :'/tweets/show_tweet'
      end
    end
 
