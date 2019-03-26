@@ -53,12 +53,12 @@ class TweetsController < ApplicationController
      if params[:content].empty?
        redirect to '/tweets/new'
       else
-     @tweet = Tweet.find_by(params[:id])
-     @tweet.content = params[:content]
-     @tweet.save
-     redirect to :'/tweets/:id'
+       @tweet = Tweet.find_by(params[:id])
+       @tweet.content = params[:content]
+       @tweet.save
+       redirect to :'/tweets/:id'
+     end
    end
- end
 
 
 
