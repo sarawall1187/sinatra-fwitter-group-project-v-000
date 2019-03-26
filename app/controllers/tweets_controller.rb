@@ -50,7 +50,7 @@ class TweetsController < ApplicationController
   end
 
    patch '/tweets/:id' do
-    @tweet = Tweet.find_by(params[:id])
+    @tweet = Tweet.find(params[:id])
      if params[:content].empty?
        redirect to "/tweets/#{@tweet.id}/edit"
       else
@@ -60,6 +60,11 @@ class TweetsController < ApplicationController
      end
    end
 
+   delete '/tweets/:id/delete' do #delete action
+  @tweet = Tweet.find(params[:id])
+  @tweet.delete
+  redirect to '/tweets'
+end
 
 
 end
