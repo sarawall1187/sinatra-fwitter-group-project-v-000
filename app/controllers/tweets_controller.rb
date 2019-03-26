@@ -39,5 +39,23 @@ class TweetsController < ApplicationController
     end
   end
 
+  get '/tweets/:slug/edit' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @tweet = Tweet.find_by(params[:slug])
+      erb :'/tweets/edit_tweet'
+    end
+  end
+
+   patch '/tweets/:slug' do
+     @tweet = Tweet.find_by(params[:slug])
+     @tweet.content = params[:content]
+     @tweet.save
+     redirect to :'/tweets/:slug'
+   end
+
+
+
 
 end
