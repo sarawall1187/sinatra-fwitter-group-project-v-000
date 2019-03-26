@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
      end
    end
 
-   get '/tweets/:slug' do
+   get '/tweets/:id' do
      if !logged_in?
        redirect to '/login'
      else
@@ -39,7 +39,7 @@ class TweetsController < ApplicationController
     end
   end
 
-  get '/tweets/:slug/edit' do
+  get '/tweets/:id/edit' do
     if !logged_in?
       redirect to '/login'
     else
@@ -48,11 +48,11 @@ class TweetsController < ApplicationController
     end
   end
 
-   patch '/tweets/:slug' do
-     @tweet = Tweet.find_by(params[:slug])
+   patch '/tweets/:id' do
+     @tweet = Tweet.find_by(params[:id])
      @tweet.content = params[:content]
      @tweet.save
-     redirect to :'/tweets/:slug'
+     redirect to :'/tweets/:id'
    end
 
 
